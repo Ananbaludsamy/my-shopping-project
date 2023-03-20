@@ -42,131 +42,180 @@ class _LoginPageState extends State<LoginPage> {
         elevation: 0.0,
       ),
       body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Username",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Center(
+              child: Text(
+                "Welcom",
+                style: TextStyle(
+                  fontSize: 36,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Center(
+              child: Text(
+                "Please enter your data to continue",
+                style: TextStyle(
+                  color: Colors.black26,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 150,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Username",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey.shade300,
+                ),
+                child: TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "UserName is require";
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(
+                      Icons.person,
+                      color: Colors.indigo.shade800,
+                    ),
+                    border: InputBorder.none,
+                    hintText: 'Username',
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.grey.shade300,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Password",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey.shade300,
+                ),
+                child: TextFormField(
+                  obscureText: !_eye,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "password is require";
+                    } else if (value.length < 5) {
+                      return "password must be 6 or more";
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'Password',
+                    prefixIcon: Icon(
+                      Icons.security,
+                      color: Colors.indigo.shade800,
+                    ),
+                    suffixIcon: IconButton(
+                      icon: _eye == false
+                          ? Icon(Icons.remove_red_eye)
+                          : Icon(Icons.remove_red_eye_outlined),
+                      onPressed: () {
+                        {
+                          setState(() {
+                            _eye = !_eye;
+                          });
+                        }
+                      },
+                    ),
+                    border: InputBorder.none,
                   ),
-                  child: TextFormField(
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "UserName is require";
-                      }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.person,
-                        color: Colors.indigo.shade800,
-                      ),
-                      border: InputBorder.none,
-                      hintText: 'Username',
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Text(
+                    'Forgot password?',
+                    style: TextStyle(
+                      color: Colors.red,
                     ),
                   ),
-                ),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Password",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                  ),
+            ),
+            SizedBox(
+              height: 150,
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'By connecting your account confirm that you agree',
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.grey.shade300,
-                  ),
-                  child: TextFormField(
-                    obscureText: !_eye,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "password is require";
-                      } else if (value.length < 5) {
-                        return "password must be 6 or more";
-                      }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Password',
-                      prefixIcon: Icon(
-                        Icons.security,
-                        color: Colors.indigo.shade800,
-                      ),
-                      suffixIcon: IconButton(
-                        icon: _eye == false
-                            ? Icon(Icons.remove_red_eye)
-                            : Icon(Icons.remove_red_eye_outlined),
-                        onPressed: () {
-                          {
-                            setState(() {
-                              _eye = !_eye;
-                            });
-                          }
-                        },
-                      ),
-                      border: InputBorder.none,
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
                     Text(
-                      'Forgot password?',
+                      'with our',
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      'Term and Condition',
                       style: TextStyle(
-                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
                 ),
+              ],
+            ),
+          ],
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.deepPurpleAccent,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(
+                0,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'By connecting your account confirm that you agree',
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'with our',
-                      ),
-                      SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        'Term and Condition',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+            ),
+            minimumSize: Size(0, 80),
+          ),
+          onPressed: () => Get.toNamed(
+            '/home',
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                "login",
+                style: TextStyle(
+                  fontSize: 18,
+                ),
               ),
             ],
           ),
