@@ -43,7 +43,7 @@ class DashboardPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 150,
+              height: 110,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -202,7 +202,7 @@ class DashboardPage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 150,
+              height: 110,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
